@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(foreach \\($p in 31440, 24204, 25968, 29524, 24836, 3904\\) { try { Stop-Process -Id $p -Force -ErrorAction Stop; \"killed $p\" } catch { \"skip $p : $\\($_.Exception.Message\\)\" } })",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='node.exe'\" | Where-Object { $_.CommandLine -match 'flippages|next' } | Select-Object ProcessId, CommandLine | Format-Table -AutoSize -Wrap)",
+      "Bash(npm run *)",
+      "Bash(echo \"started pid=$!\")",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code}  in %{time_total}s\\\\n\" http://localhost:3000/)",
+      "Bash(curl -sS -o /dev/null -w \"warm: HTTP %{http_code} in %{time_total}s\\\\n\" http://localhost:3000/)",
+      "Bash(curl -sS -o /dev/null -w \"again: HTTP %{http_code} in %{time_total}s\\\\n\" http://localhost:3000/)",
+      "Bash(curl -sS http://localhost:3000/)",
+      "Bash(curl -sS -o /dev/null -w \"asset: HTTP %{http_code}\\\\n\" http://localhost:3000/_next/static/chunks/main-app.js)"
+    ]
+  }
+}
